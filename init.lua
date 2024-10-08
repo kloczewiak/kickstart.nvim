@@ -926,7 +926,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
@@ -950,11 +950,6 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>ee', api.tree.toggle, { desc = 'Toggle NVim Tree' })
       vim.keymap.set('n', '<leader>ef', api.tree.focus, { desc = 'Focus on NVim Tree' })
     end,
-  },
-  {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    config = true,
   },
 }, {
   ui = {
