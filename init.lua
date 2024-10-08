@@ -321,7 +321,6 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-        { '<leader>e', group = 'NVim Tree' },
       },
     },
   },
@@ -927,7 +926,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -940,16 +939,6 @@ require('lazy').setup({
     'pmizio/typescript-tools.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     opts = {},
-  },
-  {
-    'nvim-tree/nvim-tree.lua',
-    config = function()
-      require('nvim-tree').setup()
-
-      local api = require 'nvim-tree.api'
-      vim.keymap.set('n', '<leader>ee', api.tree.toggle, { desc = 'Toggle NVim Tree' })
-      vim.keymap.set('n', '<leader>ef', api.tree.focus, { desc = 'Focus on NVim Tree' })
-    end,
   },
 }, {
   ui = {
