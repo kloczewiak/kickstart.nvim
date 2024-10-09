@@ -622,6 +622,10 @@ require('lazy').setup({
         -- ts_ls = {},
         --
         omnisharp = {},
+        cssls = {},
+        css_variables = {},
+        cssmodules_ls = {},
+        tailwindcss = {},
 
         lua_ls = {
           -- cmd = {...},
@@ -712,6 +716,10 @@ require('lazy').setup({
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        css = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },
