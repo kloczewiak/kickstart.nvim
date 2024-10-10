@@ -382,11 +382,12 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
+        defaults = {
+          --   mappings = {
+          --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+          --   },
+          winblend = 10,
+        },
         -- pickers = {}
         extensions = {
           ['ui-select'] = {
@@ -418,6 +419,10 @@ require('lazy').setup({
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
           previewer = false,
+          layout_config = {
+            height = 0.8,
+            width = 0.7,
+          },
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
 
