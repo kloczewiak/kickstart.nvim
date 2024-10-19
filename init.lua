@@ -387,6 +387,15 @@ require('lazy').setup({
           --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
           --   },
           winblend = 10,
+          layout_config = {
+            horizontal = {
+              height = 0.9,
+              preview_cutoff = 100,
+              preview_width = 0.5,
+              width = 0.9,
+            },
+          },
+          dynamic_preview_title = true,
         },
         -- pickers = {}
         extensions = {
@@ -417,7 +426,6 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
           previewer = false,
           layout_config = {
             height = 0.8,
