@@ -630,7 +630,18 @@ require('lazy').setup({
         cssls = {},
         css_variables = {},
         cssmodules_ls = {},
-        tailwindcss = {},
+        tailwindcss = {
+          settings = {
+            tailwindCSS = {
+              classAttributes = {
+                'class',
+                'className',
+                'ngClass',
+                '.*Styles',
+              },
+            },
+          },
+        },
 
         lua_ls = {
           -- cmd = {...},
@@ -764,6 +775,8 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      -- Highlighting colors in tailwindcss
+      'onsails/lspkind-nvim',
     },
     config = function()
       -- See `:help cmp`
@@ -772,6 +785,13 @@ require('lazy').setup({
       luasnip.config.setup {}
 
       cmp.setup {
+        formatting = {
+          format = require('lspkind').cmp_format {
+            before = require('tailwind-tools.cmp').lspkind_format,
+          },
+          fields = { 'abbr', 'kind', 'menu' },
+          expandable_indicator = true,
+        },
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
