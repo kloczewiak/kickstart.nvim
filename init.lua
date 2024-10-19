@@ -151,6 +151,11 @@ require('lazy').setup({
         delete = { text = '┃' },
       },
     },
+    init = function()
+      vim.cmd.hi 'GitSignsStagedAdd guifg=#449dab'
+      vim.cmd.hi 'GitSignsStagedDelete guifg=#914c54'
+      vim.cmd.hi 'GitSignsStagedChange guifg=#6183bb'
+    end,
   },
 
   { -- Useful plugin to show you pending keybinds.
