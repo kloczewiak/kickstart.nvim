@@ -690,7 +690,10 @@ require('lazy').setup({
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
+      require('mini.surround').setup {
+        n_lines = 500,
+        highlight_duration = 1000,
+      }
 
       -- Simple and easy statusline.
       local statusline = require 'mini.statusline'
