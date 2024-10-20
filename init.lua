@@ -132,7 +132,12 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  {
+    'tpope/vim-sleuth',
+    init = function()
+      vim.keymap.set('n', '<leader>wi', ':Sleuth<CR>', { desc = 'Sleuth - detect [i]ndent size' })
+    end,
+  },
 
   -- See `:help gitsigns` to understand what the configuration keys do
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
