@@ -44,7 +44,10 @@ return {
   {
     'akinsho/toggleterm.nvim',
     opts = {
-      open_mapping = '<C-_>',
+      -- <C-_> for Windows
+      -- <C-/> for MacOS
+      -- because Control forwardslash on windows reports as <C-_> for some reason
+      open_mapping = { '<C-_>', '<C-/>' },
     },
   },
 }
