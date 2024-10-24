@@ -43,9 +43,8 @@ return {
   },
   {
     'akinsho/toggleterm.nvim',
-    opts = {},
-    init = function()
-      vim.keymap.set('n', '<leader>tt', ':ToggleTerm<CR>', { desc = '[T]oggle[T]erm' })
-    end,
+    opts = {
+      open_mapping = '<C-_>',
+    },
   },
 }
