@@ -73,4 +73,35 @@ return {
     end,
     ft = { 'markdown' },
   },
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+    config = function()
+      require('copilot').setup {
+        panel = {
+          keymap = {
+            open = '<M-/>',
+          },
+          layout = {
+            position = 'right',
+            ratio = 0.4,
+          },
+        },
+        suggestion = {
+          auto_trigger = true,
+          hide_during_completion = false,
+          keymap = {
+            accept = '<M-CR>',
+            accept_word = '<M-l>',
+            accept_line = '<M-j>',
+          },
+        },
+      }
+    end,
+    init = function()
+      vim.keymap.set('n', '<M-/>', require('copilot.panel').open, { desc = '[copilot] (panel) open' })
+      vim.keymap.set('n', '<leader>tc', require('copilot.suggestion').toggle_auto_trigger, { desc = '[T]oggle [C]opilot Suggestions' })
+    end,
+  },
 }
