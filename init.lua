@@ -71,6 +71,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Disable auto commenting on newline
+vim.cmd 'au BufEnter * set fo-=c fo-=r fo-=o'
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
