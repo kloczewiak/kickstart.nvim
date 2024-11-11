@@ -104,4 +104,43 @@ return {
       vim.keymap.set('n', '<leader>tc', require('copilot.suggestion').toggle_auto_trigger, { desc = '[T]oggle [C]opilot Suggestions' })
     end,
   },
+  {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    branch = 'canary',
+    dependencies = {
+      { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
+      { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
+    },
+    build = 'make tiktoken', -- Only on MacOS or Linux
+    opts = {
+      debug = true, -- Enable debugging
+      -- See Configuration section for rest
+    },
+    init = function()
+      require('which-key').add {
+        { '<leader>cc', group = '[C]opilot [C]hat', mode = { 'n', 'v' } },
+      }
+
+      local chat = require 'CopilotChat'
+
+      vim.keymap.set({ 'n', 'v' }, '<leader>ccq', function()
+        local input = vim.fn.input 'Quick Chat: '
+        if input ~= '' then
+          local select = require 'CopilotChat.select'
+          chat.ask(input, { selection = select.visual or select.buffer })
+        end
+      end, { desc = '[C]opilot [C]hat [Q]uick Chat' })
+
+      vim.keymap.set({ 'n', 'v' }, '<leader>cch', function()
+        local actions = require 'CopilotChat.actions'
+        require('CopilotChat.integrations.telescope').pick(actions.help_actions())
+      end, { desc = '[C]opilot [C]hat [H]elp Actions' })
+
+      vim.keymap.set({ 'n', 'v' }, '<leader>ccp', function()
+        local actions = require 'CopilotChat.actions'
+        require('CopilotChat.integrations.telescope').pick(actions.prompt_actions())
+      end, { desc = '[C]opilot [C]hat [P]rompt Actions' })
+    end,
+    -- See Commands section for default commands if you want to lazy load on them
+  },
 }
