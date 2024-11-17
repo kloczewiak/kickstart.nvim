@@ -15,6 +15,33 @@ return {
         },
       },
     },
+    init = function()
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = { 'typescript', 'typescriptreact' }, -- Apply to TypeScript and React TypeScript
+        callback = function()
+          -- Load which-key only when the autocommand triggers
+          local whichkey = require 'which-key'
+
+          -- Set up which-key groups for TypeScript mappings
+          whichkey.add({
+            { '<leader>ts', group = '[T]ype[S]cript', mode = 'n' },
+            { '<leader>tsi', group = '[T]ype[S]cript [I]mports', mode = 'n' },
+          }, { buffer = 0 }) -- buffer = 0 applies it only to the current buffer
+
+          local ts = require 'typescript-tools.api'
+
+          -- Define TypeScript-specific key mappings
+          local opts = { buffer = true, noremap = true, silent = true }
+          vim.keymap.set('n', '<leader>tsio', ts.organize_imports, vim.tbl_extend('keep', opts, { desc = '[T]ype[S]cript [I]mports [O]rganize' }))
+          vim.keymap.set('n', '<leader>tsis', ts.sort_imports, vim.tbl_extend('keep', opts, { desc = '[T]ype[S]cript [I]mports [S]ort' }))
+          vim.keymap.set('n', '<leader>tsir', ts.remove_unused_imports, vim.tbl_extend('keep', opts, { desc = '[T]ype[S]cript [I]mports [R]emove Unused' }))
+          vim.keymap.set('n', '<leader>tsia', ts.add_missing_imports, vim.tbl_extend('keep', opts, { desc = '[T]ype[S]cript [I]mports [A]dd Missing' }))
+
+          vim.keymap.set('n', '<leader>tsr', ts.remove_unused, vim.tbl_extend('keep', opts, { desc = '[T]ype[S]cript [R]emove Unused Statements' }))
+          vim.keymap.set('n', '<leader>tsf', ts.fix_all, vim.tbl_extend('keep', opts, { desc = '[T]ype[S]cript [F]ix All Fixable Errors' }))
+        end,
+      })
+    end,
   },
   {
     -- Uses correct comments for most file types
