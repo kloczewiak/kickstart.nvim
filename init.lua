@@ -585,6 +585,9 @@ require('lazy').setup({
 
       -- Highlighting colors in tailwindcss
       'onsails/lspkind-nvim',
+
+      -- Display function signature when typing
+      'hrsh7th/cmp-nvim-lsp-signature-help',
     },
     config = function()
       -- See `:help cmp`
@@ -655,6 +658,7 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'nvim_lsp_signature_help' },
         },
       }
     end,
