@@ -39,7 +39,18 @@ return {
       'nvim-telescope/telescope.nvim', -- optional
       'neovim/nvim-lspconfig', -- optional
     },
-    opts = {},
+    opts = {
+      server = {
+        settings = {
+          classAttributes = {
+            'class',
+            'className',
+            'ngClass',
+            '.*Styles',
+          },
+        },
+      },
+    },
   },
   {
     'akinsho/toggleterm.nvim',

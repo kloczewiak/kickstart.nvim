@@ -448,18 +448,7 @@ require('lazy').setup({
         cssls = {},
         css_variables = {},
         cssmodules_ls = {},
-        tailwindcss = {
-          settings = {
-            tailwindCSS = {
-              classAttributes = {
-                'class',
-                'className',
-                'ngClass',
-                '.*Styles',
-              },
-            },
-          },
-        },
+        tailwindcss = {},
 
         lua_ls = {
           -- cmd = {...},
