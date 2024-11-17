@@ -6,6 +6,7 @@ return {
   {
     -- Typescript plugin
     'pmizio/typescript-tools.nvim',
+    branch = 'feature/221-v2',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     opts = {
       settings = {
