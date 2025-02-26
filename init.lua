@@ -163,6 +163,7 @@ require('lazy').setup({
       vim.cmd.hi 'GitSignsStagedAdd guifg=#449dab'
       vim.cmd.hi 'GitSignsStagedDelete guifg=#914c54'
       vim.cmd.hi 'GitSignsStagedChange guifg=#6183bb'
+      vim.opt.signcolumn = 'auto:1-2'
     end,
   },
 
@@ -618,8 +619,8 @@ require('lazy').setup({
           ['<C-n>'] = cmp.mapping.select_next_item(),
           ['<C-p>'] = cmp.mapping.select_prev_item(),
 
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-b>'] = cmp.mapping.scroll_docs(-3),
+          ['<C-f>'] = cmp.mapping.scroll_docs(3),
 
           ['<C-y>'] = cmp.mapping.confirm { select = true },
 
@@ -773,5 +774,8 @@ require('lazy').setup({
       task = '📌',
       lazy = '💤 ',
     },
+  },
+  git = {
+    timeout = 600,
   },
 })

@@ -3,10 +3,13 @@
 --
 -- See the kickstart.nvim README for more information
 return {
+  { -- Nice looking vim.ui
+    'stevearc/dressing.nvim',
+    opts = {},
+  },
   {
     -- Typescript plugin
     'pmizio/typescript-tools.nvim',
-    branch = 'feature/221-v2',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     opts = {
       settings = {
@@ -75,6 +78,14 @@ return {
             'className',
             'ngClass',
             '.*Styles',
+            'variant',
+            'variants',
+          },
+          experimental = {
+            classRegex = {
+              { 'cva\\(([^)]*)\\)', '["\'`]([^"\'`]*).*?["\'`]' },
+              { 'cx\\(([^)]*)\\)', "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+            },
           },
         },
       },
@@ -163,11 +174,19 @@ return {
       local chat = require 'CopilotChat'
 
       vim.keymap.set({ 'n', 'v' }, '<leader>ccq', function()
-        local input = vim.fn.input 'Quick Chat: '
-        if input ~= '' then
+        vim.ui.input({ prompt = 'Quick Chat: ' }, function(input)
+          if input == nil then
+            return
+          end
+
           local select = require 'CopilotChat.select'
           chat.ask(input, { selection = select.visual or select.buffer })
-        end
+        end)
+        -- local input = vim.fn.input 'Quick Chat: '
+        -- if input ~= '' then
+        --   local select = require 'CopilotChat.select'
+        --   chat.ask(input, { selection = select.visual or select.buffer })
+        -- end
       end, { desc = '[C]opilot [C]hat [Q]uick Chat' })
 
       vim.keymap.set({ 'n', 'v' }, '<leader>cch', function()
