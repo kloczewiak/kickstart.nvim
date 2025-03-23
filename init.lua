@@ -485,7 +485,8 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'isort',
         'black',
-        'prettierd',
+        -- use prettier instead of prettierd because of config issues
+        'prettier',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -541,11 +542,12 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         python = { 'isort', 'black' },
-        javascript = { 'prettierd', 'prettier', stop_after_first = true },
-        javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-        typescript = { 'prettierd', 'prettier', stop_after_first = true },
-        typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-        css = { 'prettierd', 'prettier', stop_after_first = true },
+        -- use prettier instead of prettierd because of config issues
+        javascript = { 'prettier', stop_after_first = true },
+        javascriptreact = { 'prettier', stop_after_first = true },
+        typescript = { 'prettier', stop_after_first = true },
+        typescriptreact = { 'prettier', stop_after_first = true },
+        css = { 'prettier', stop_after_first = true },
       },
     },
   },
