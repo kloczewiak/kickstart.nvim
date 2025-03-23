@@ -76,6 +76,7 @@ return {
           classAttributes = {
             'class',
             'className',
+            'className.*',
             'ngClass',
             '.*Styles',
             'variant',
