@@ -548,6 +548,7 @@ require('lazy').setup({
         typescript = { 'prettier', stop_after_first = true },
         typescriptreact = { 'prettier', stop_after_first = true },
         css = { 'prettier', stop_after_first = true },
+        json = { 'prettier', stop_after_first = true },
       },
     },
   },
